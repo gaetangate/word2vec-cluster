@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-
-WORD2VEC CENTROID TOOL
+Word2Vec Centroid Tool
 
 Author: Gaetano Rossiello, University of Bari, Italy
 Email: gaetano.rossiello@uniba.it
@@ -45,9 +44,9 @@ def main():
     word_centroid_list = list(zip(w2v_model.wv.index2word, idx))
     word_centroid_list_sort = sorted(word_centroid_list, key=lambda el: el[1], reverse=False)
     file_out = open(args.output, "w")
-    # file_out.write("WORD,K\n")
+    file_out.write("WORD\tCLUSTER_ID\n")
     for word_centroid in word_centroid_list_sort:
-        line = word_centroid[0] + ',' + str(word_centroid[1]) + '\n'
+        line = word_centroid[0] + '\t' + str(word_centroid[1]) + '\n'
         file_out.write(line)
     file_out.close()
     print("finished in {:.2f} sec.".format(time.time() - start), flush=True)
